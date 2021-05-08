@@ -45,7 +45,7 @@ public class ParticipantRestController {
                     "Unable to create. A participant with login " + participant.getLogin() + " already exists.",
                     HttpStatus.CONFLICT);
         }
-        participantService.add(participant) ;
+        participantService.add(participant);
         return new ResponseEntity<Participant>(participant, HttpStatus.CREATED);
     }
 
@@ -58,9 +58,9 @@ public class ParticipantRestController {
         }
         participantService.delete(participant);
         return new ResponseEntity<Participant>(participant, HttpStatus.OK);
-        //return new ResponseEntity<Participant>(HttpStatus.NO_CONTENT);
+        // return new ResponseEntity<Participant>(HttpStatus.NO_CONTENT);
     }
-    
+
     // PUT http://localhost:8080/participants/user2
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateParticipant(@PathVariable("id") String login, @RequestBody Participant participant) {

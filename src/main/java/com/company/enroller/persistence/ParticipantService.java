@@ -11,37 +11,37 @@ import com.company.enroller.model.Participant;
 @Component("participantService")
 public class ParticipantService {
 
-	Session session;
+    Session session;
 
-	public ParticipantService() {
-		session =DatabaseConnector.getInstance().getSession();
-	}
+    public ParticipantService() {
+        session = DatabaseConnector.getInstance().getSession();
+    }
 
-	public Collection<Participant> getAll() {
-		return session.createCriteria(Participant.class).list();
-	}
+    public Collection<Participant> getAll() {
+        return session.createCriteria(Participant.class).list();
+    }
 
-    public Participant findByLogin(String login) {   
+    public Participant findByLogin(String login) {
         return (Participant) session.get(Participant.class, login);
     }
 
-    public void add(Participant participant) {       
+    public void add(Participant participant) {
         Transaction transaction = this.session.beginTransaction();
         session.save(participant);
-        transaction.commit();  
+        transaction.commit();
     }
 
     public void delete(Participant participant) {
         Transaction transaction = this.session.beginTransaction();
         session.delete(participant);
-        transaction.commit();  
-        
+        transaction.commit();
+
     }
 
     public void update(Participant participant) {
         Transaction transaction = this.session.beginTransaction();
         session.merge(participant);
-        transaction.commit();  
-        
+        transaction.commit();
+
     }
 }
